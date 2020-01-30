@@ -9,7 +9,7 @@ defs.h
 sysproc.c 
 proc.c 
 ```
-and all user space programs that uses the exit system call. In these user space programs we will simply change the parameter of `exit()` to `exit(0)`. In the following images are where changes have been made in the previously listed files.
+and all user space programs that uses the exit system call. In these user space programs we will simply change the parameter of `exit()` to `exit(0)`. In the following images are the changes made in the previously listed files.
 
 | user.h | defs.h |
 |--------|--------|
@@ -34,3 +34,12 @@ defs.h
 sysproc.c 
 proc.c 
 ```
+Similarly to our changes in the exit system call signature, we will change all cases of `wait()` to `wait(0)`. In the following images are the changes made in the previously listed files.
+
+| user.h | defs.h |
+|--------|--------|
+|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waituser.JPG">|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitdefs.JPG">|
+
+| sysproc.c | proc.c |
+|-----------|--------|
+|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitsysproc.JPG">|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitproc.JPG">|
