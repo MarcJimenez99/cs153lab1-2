@@ -13,6 +13,6 @@ and all user space programs that uses the exit system call. In these user space 
 
 | col 1      | col 2      |
 |------------|-------------|
-| image 1 | image 2 |
-![user.h](https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/pic1.1.JPG)
+| <img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/pic1.1.JPG"> | image 2 |
+
 
