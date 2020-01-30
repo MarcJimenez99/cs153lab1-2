@@ -43,3 +43,11 @@ Similarly to our changes in the exit system call signature, we will change all c
 | sysproc.c | proc.c |
 |-----------|--------|
 |<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitsysproc.JPG">|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitproc.JPG">|
+
+In both `user.h` and `defs.h` we will change the parameter of `wait()` to take in an `int*` thus changing the function to `int wait(int*)`. 
+
+Originally in our `sysproc.c` file the function `sys_wait` would be called when the process would call the `wait()` function. This would then just return the `wait()` function due to no parameters being passed by the user. Now that we are passing in an `int*` we need to use the helper function known as `argptr()` in order to receive the argument from the user stack. Once receiving the argument we will then just return the user process function `wait(int*)`.
+
+For our `proc.c` function we want to make sure we reset the `int* status` of the process once the first child process has finished running and is ready to terminate. Our `wait()` function currently iterates through all the given processes through the `ptable` structure. Once we've found a process that is a child of the `curproc` and is in the `zombie` state, then we will want to deallocate the memory that the `zombie` process is in possession of. Since we are adding the `int* status` parameter to our processes, we need to also deallocate the status as well. So in our `zombie` processwe want to change the passed in `*status` to equal the iterating `proc *p` status. 
+
+### c) Adding a waitpid system call: int waitpid(int pid, int *status, int options)
