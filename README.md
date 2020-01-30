@@ -15,4 +15,7 @@ and all user space programs that uses the exit system call. In these user space 
 |--------|--------|
 |<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/pic1.1.JPG">|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/pic1.2.JPG">|
 
+| sysproc.c | proc.c |
+|-----------|--------|
+|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/pic1.3.JPG">|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/pic1.4.JPG">|
 
