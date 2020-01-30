@@ -13,4 +13,7 @@ and all user space programs that uses the exit system call. In these user space 
 
 - user.h
 ![user.h](https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/pic1.1.JPG)
+- defs.h
+- sysproc.c
+- proc.c 
 
