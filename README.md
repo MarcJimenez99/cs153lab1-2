@@ -78,3 +78,12 @@ In `proc.c` we will use most of the same code as our function `wait`. However, `
 |<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpidsysproc.JPG">|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpidproc.JPG">|
 
 In the following files: `Makefile`, `syscall.c`, `syscall.h`, and `usys.S`. We will simply implement the necessary code to have our `waitpid` become a system call.
+
+| Makefile | usys.S |
+|--------|--------|
+|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpiduser.JPG">|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpiddefs.JPG">|
+
+| syscall.c | syscall.h |
+|--------|--------|
+|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpidsyscallc.JPG"><img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpidsyscallc1.JPG">|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpidsyscallh.JPG">|
+
