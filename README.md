@@ -55,11 +55,24 @@ For our `proc.c` function we want to make sure we reset the `int* status` of the
 In order to add this system call we need to make the necessary changes to the following files in order to create the command. These files are:
 ```
 sysproc.c
-syscall.h
+proc.c
+defs.h
 user.h
+Makefile
 syscall.c
 syscall.h
 usys.S
-defs.h
-sysfunc.h
 ```
+Similar to the previous changes we've made on both the `wait` and `exit` function, we will simply insert a new line in `defs.h` and `user.h` declaring our new system call `waitpid`. 
+| user.h | defs.h |
+|--------|--------|
+|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpiduser.JPG">|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpiddefs.JPG">|
+
+In `sysproc.c` we will use `argint` and `argptr` in order to receive the three necessary arguments from the user stack. These variables are `int pid`, `int *status`, and `int options`. Once receiving the arguments we will return our new `waitpid` function in `proc.c`. 
+
+In `proc.c` we will use most of the same code as our function `wait`. However, `waitpid` does not wait for the first terminated child process, instead it waits for a specific child process to end. So instead of checking if our iterative process `p` is the child process of the `curproc`, we will instead look to see if `p->pid == pid`. If it does not then we will continue to iterate through the `ptable`. We also will change the `havekids` variable to `matchingPID` to match the functionality of `waitpid`.  
+| sysproc.c | proc.c |
+|--------|--------|
+|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpidsysproc.JPG">|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpidproc.JPG">|
+
+In the following files: `Makefile`, `syscall.c`, `syscall.h`, and `usys.S`. We will simply implement the necessary code to have our `waitpid` become a system call.
