@@ -51,3 +51,15 @@ Originally in our `sysproc.c` file the function `sys_wait` would be called when 
 For our `proc.c` function we want to make sure we reset the `int* status` of the process once the first child process has finished running and is ready to terminate. Our `wait()` function currently iterates through all the given processes through the `ptable` structure. Once we've found a process that is a child of the `curproc` and is in the `zombie` state, then we will want to deallocate the memory that the `zombie` process is in possession of. Since we are adding the `int* status` parameter to our processes, we need to also deallocate the status as well. So in our `zombie` processwe want to change the passed in `*status` to equal the iterating `proc *p` status. 
 
 ### c) Adding a waitpid system call: int waitpid(int pid, int *status, int options)
+
+In order to add this system call we need to make the necessary changes to the following files in order to create the command. These files are:
+```
+sysproc.c
+syscall.h
+user.h
+syscall.c
+syscall.h
+usys.S
+defs.h
+sysfunc.h
+```
