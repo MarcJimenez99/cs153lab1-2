@@ -93,3 +93,11 @@ In order to create an example program, we have to make similar changes to the ma
 
 <img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/lab1testsmakefile0.JPG">
 <img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/lab1testsmakefile1.JPG">
+
+The example code itself is in the following picture:
+
+<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/lab1testsexamplecode.JPG">
+
+The example code will create an array of type int called `int pid[5]`. It will run through a loop and call fork 5 times to create 5 child processes. Then in the following loop it will iterate once more and reap each child process in order. 
+
+<img src = "https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/lab1examplesuccess.JPG">
