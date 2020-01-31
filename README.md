@@ -87,3 +87,9 @@ In the following files: `Makefile`, `syscall.c`, `syscall.h`, and `usys.S`. We w
 |--------|--------|
 |<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpidsyscallc.JPG"><img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpidsyscallc1.JPG">|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpidsyscallh.JPG">|
 
+### d) Example program: lab1tests
+
+In order to create an example program, we have to make similar changes to the makefile as we did for `waitpid`. These changes include:
+
+<img src="">
+<img src="">
