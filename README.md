@@ -81,7 +81,7 @@ In the following files: `Makefile`, `syscall.c`, `syscall.h`, and `usys.S`. We w
 
 | Makefile | usys.S |
 |--------|--------|
-|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpiduser.JPG">|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpiddefs.JPG">|
+|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpidmakefile1.0.JPG"><img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpidmakefile1.1.JPG">|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpidusys.JPG">|
 
 | syscall.c | syscall.h |
 |--------|--------|
