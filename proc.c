@@ -334,10 +334,13 @@ waitpid(int pid, int* status, int options)
       if(p->pid != pid)
         continue;
       // if matchingPID = 1, then the process matches our given PID             
-      matchingPID = 1;
+      matchingPID = 1; 
       if(p->state == ZOMBIE){
         // Found one.
         if(status) {
+	  if(options == 1) {
+	    return *status;
+	  }
           *status = p->status;
         }
         pid = p->pid;
