@@ -324,23 +324,19 @@ waitpid(int pid, int* status, int options)
     // the first child. Since we're given a PID we will not need to create a PID.
     int matchingPID;
     struct proc *curproc = myproc();
-  
     acquire(&ptable.lock);
     for(;;) {
     // Scan through table looking for exited children.
     // default set matchingPID = 0
     matchingPID = 0;
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-      if(p->pid != pid)
+      if(p->pid != pid)  
         continue;
-      // if matchingPID = 1, then the process matches our given PID             
-      matchingPID = 1; 
+      // if matchingPID = 1, then the process matches our given PID            
+      matchingPID = 1;
       if(p->state == ZOMBIE){
         // Found one.
         if(status) {
-	  if(options == 1) {
-	    return *status;
-	  }
           *status = p->status;
         }
         pid = p->pid;
@@ -354,9 +350,12 @@ waitpid(int pid, int* status, int options)
         p->state = UNUSED;
         release(&ptable.lock);
 	return pid;
-      }
+	}
+	if (options == 1 && p->state == RUNNING) {
+		release(&ptable.lock);
+		return 0;
+	}
     }
-   
     if(!matchingPID || curproc->killed) {
       release(&ptable.lock);
       return -1;
