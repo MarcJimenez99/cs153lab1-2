@@ -86,7 +86,7 @@ In the following files: `syscall.c`, `syscall.h`, and `usys.S`. We will simply i
 |--------|--------|
 |<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpidsyscallc.JPG"><img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpidsyscallc1.JPG">|<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/waitpidsyscallh.JPG">|
 
-### d) Example program: lab1tests
+### d) Example program: lab1tests and test bench
 
 In order to create an example program, we have to make similar changes to the makefile as we did for `waitpid`. These changes include:
 
@@ -100,3 +100,7 @@ The example code itself is in the following picture:
 The example code will create an array of type int called `int pid[5]`. It will run through a loop and call fork 5 times to create 5 child processes. Then in the following loop it will iterate once more and reap each child process in order. 
 
 <img src = "https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/lab1examplesuccess.JPG">
+
+For the test bench we ran a given program and was able to receive the necessary output:
+
+<img src = "https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/lab1testbench.JPG">
