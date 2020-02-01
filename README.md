@@ -104,3 +104,15 @@ The example code will create an array of type int called `int pid[5]`. It will r
 For the test bench we ran a given program and was able to receive the necessary output:
 
 <img src = "https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/lab1testbench.JPG">
+
+### e) WNOHANG and CELEBW02 test
+
+In order to add the WNOHANG flag to our `waitpid` function we added an if statement that checked if options had a value of 1 which we set defined WNOHANG to be. If options did equal 1 we then released the `lock` on the `ptable` in order to allow future iterations on the ptable and returned 0 to prevent the suspension of the parent process. 
+
+<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/lab1wnohangproc.JPG">
+
+The following picture depicts the output of this on the test bench:
+
+<img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/lab1WNOHANG.JPG">
+
+<img src="">
