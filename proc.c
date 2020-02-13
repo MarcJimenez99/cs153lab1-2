@@ -88,6 +88,7 @@ allocproc(void)
 found:
   p->state = EMBRYO;
   p->pid = nextpid++;
+  p->priority = 8;
 
   release(&ptable.lock);
 
@@ -110,7 +111,7 @@ found:
   sp -= sizeof *p->context;
   p->context = (struct context*)sp;
   memset(p->context, 0, sizeof *p->context);
-  p->context->eip = (uint)forkret;
+  p->context->eip = (uint)forkret; //cause the kernel thread to execute at the start of forkret, returns to adddress at the bottom of the stack
 
   return p;
 }
@@ -351,7 +352,7 @@ waitpid(int pid, int* status, int options)
         release(&ptable.lock);
 	return pid;
 	}
-	if (options == 1 && p->state == RUNNING) {
+	if (options == 1) {
 		release(&ptable.lock);
 		return 0;
 	}
@@ -372,27 +373,36 @@ scheduler(void)
 {
   struct proc *p;
   struct cpu *c = mycpu();
+  struct proc *p1;
   c->proc = 0;
   
   for(;;){
     // Enable interrupts on this processor.
     sti();
-
+    
+    struct proc *highP;
     // Loop over process table looking for process to run.
     acquire(&ptable.lock);
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state != RUNNABLE)
         continue;
-
+      highP = p;
+      for(p1 = ptable.proc; p1 < &ptable.proc[NPROC]; p1++){
+	if(p1->state != RUNNABLE)
+	  continue;
+	if(highP->priority > p1->priority)
+	  highP = p1;
+      } 
+      p = highP;
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
       // before jumping back to us.
       c->proc = p;
-      switchuvm(p);
+      switchuvm(p); //tells the hardware to start using the target's process page table
       p->state = RUNNING;
 
-      swtch(&(c->scheduler), p->context);
-      switchkvm();
+      swtch(&(c->scheduler), p->context);//context switch to the target processs's kernel thread. First saves the current registers. C->scheduler saves the current hardware registers in per-cpu storage. P->context loads saved regsiters of the target kernel thread into the x86 hardware registers, including stack pointer and instruction pointer.
+      switchkvm(); //switches out of the user virtual map into the kernal
 
       // Process is done running for now.
       // It should have changed its p->state before coming back.
