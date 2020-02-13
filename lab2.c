@@ -9,9 +9,6 @@ int main(int argc, char *argv[])
   int PDAgingScheduler(void);
 
   printf(1, "\n This program tests the correctness of your lab#2\n"); 
-  printf(1, "\n Enter lab2 1 to test Priority Scheduling\n"); 
-  printf(1, "\n Enter lab2 2 to test Aging Priority Scheduling increasing priority feature\n");
-  printf(1, "\n Enter lab2 3 to test Aging Priority Scheduling decreasing prioirty feature \n");
   if(atoi(argv[1]) == 1) { 
     PScheduler();
   }
@@ -21,7 +18,11 @@ int main(int argc, char *argv[])
   else if (atoi(argv[1]) == 3) {
     PDAgingScheduler();
   }
-  else { } 
+  else {
+    printf(1, "\n Enter \"lab2 1\" to test Priority Scheduling\n");
+    printf(1, "\n Enter \"lab2 2\" to test Aging Priority Scheduling increasing priority feature\n");
+    printf(1, "\n Enter \"lab2 3\" to test Aging Priority Scheduling decreasing prioirty feature \n");
+  } 
   exit(0);
 }
 
@@ -97,7 +98,7 @@ PIAgingScheduler(void) {
     for (i = 0; i < 3; i++) {
       wait(0);
     }  
-    printf(1, "\n  If processes prioirity increments as they finished then it is correct\n");
+    printf(1, "\n  If all child processes increased their priorities when finishing then it is correct\n");
   }
   exit(0);
   return 0;
@@ -133,6 +134,7 @@ PDAgingScheduler(void) {
   else {
     printf(1,"\n Error \n");
   }
+  printf(1, "\n If the parent process decreased it's priority from 30 to 29 then it is correct! \n"); 
   exit(0); 
   return 0;
 }
