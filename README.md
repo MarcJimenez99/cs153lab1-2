@@ -1,4 +1,4 @@
-# CS153 Lab1 (Exit, Wait, Waitpid & WNOHANG) & Lab2 (Priority Scheduling & Aging Priority)
+# CS153 Lab1 (Exit, Wait, Waitpid & WNOHANG) &       Lab2 (Priority Scheduling & Aging Priority)
 ## Lab 1 - Exit, Wait, Waitpid, WNOHANG
 ### a) Changing the exit system call signature to void exit(int status)
 
