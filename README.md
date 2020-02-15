@@ -149,3 +149,4 @@ First we will edit `proc.h` and add the `int priority` variable. This is so all 
 
 Now once setting that up we will now edit `proc.c` in order to enable priority scheduling and aging of priority. First we will change the `static struct proc* allocproc(void)`. This function will find unused processes and initialize their variables so now that we are giving our processes a priority variable we will want that initialized too. So in order to do that we added to the function to make it so initalized unused processes when found are given a priority of 15.
 
+<img src ="https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetProcCAllocProc.JPG">
