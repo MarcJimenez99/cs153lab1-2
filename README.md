@@ -156,3 +156,31 @@ Next we will edit the `void schduler(void)` function. Originally the function ra
 The second functionality our scheduler has is the aging of priority. We want to make it so when processes run they decrement in priority if they are context switched. In addition, processes that are `RUNNABLE` and do not get a chance to run will increment in their priority. We do that by taking all processses that are a lower priority than our highest process and our `RUNNABLE` and incrementing their priority by 1. If they are at the max priority of 31 then we set it to 31. Similarly after we have ran the process we will then take the process that ran and decrement it by 1. If it is at the lowest priority of 0 then we keep it at 0.
 
 <img src ="https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/LAB2SCHDULER.JPG">
+
+Next we tested our new changes in our `lab2.c` file. Running this file in the shell with command `lab2` gives our users three options:
+
+<img src ="https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/lab2userinput.JPG">
+
+The first option runs the given test bench we had to test our priority scheduling.
+
+<img src ="https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetPScheduler.JPG">
+
+This is the output:
+
+<img src ="https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/lab21output.JPG">
+
+The second option is our written test and it tests the aging of priority functionality with three children. It is set up where the three children will run and exit and until the last child has exited the parent will wait. While it waits it will print out to console the priority as it decrements. If the three children exit before the parent and the parent's priority decrements then it is correct.
+
+<img src ="https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetPIAging.JPG">
+
+This is the output:
+
+<img src ="https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/lab22output.JPG">
+
+The last option is a second written test and tests the aging of priority functionality with only one child. The parent forks creating the child but waits until they finish. The parent should then decrement in priority.
+
+<img src ="https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetlab2PDAging.JPG">
+
+This is the output:
+
+<img src ="https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/lab23output.JPG">
