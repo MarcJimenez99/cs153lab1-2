@@ -141,12 +141,15 @@ usys.S
 | proc.h | usys.S |
 |--------|--------|
 |<img src=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/prochlab2.JPG>|<img src=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetUSYS.JPG>|
+
 | defs.h | user.h |
 |--------|--------|
 |<img src="https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetDefsH.JPG">|<img src=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetUserH.JPG>|
+
 | syscall.h | sysproc.c |
 |--------|--------|
 |<img src=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetSysCallH1.JPG>|<img src=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetSysprocC.JPG>|
+
 | syscall.c |
 |--------|
 |<img src=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetSysCallC1.JPG><img src=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetSysCallC2.JPG>|
