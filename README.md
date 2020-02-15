@@ -121,23 +121,16 @@ The following picture depicts the output of this on the test bench:
 In order to add priority scheduling we are going to make changes in the following files:
 ```
 sysproc.c
+proc.h
 proc.c
-proc.h
-defs.h
-user.h
-syscall.h
-usys.S
-```
-We are going to add a new variable in our PCB stucture located in our `proc.h` called `int priority` in order to track priority amongst proccesses. This will allow us to run the highest priority first. The way we have structured the priority is that 0 is our lowest priority and 31 is the highest. In addition to this we will need system calls in order to test this priority within our user processes. In order to create these two system calls we will declare the two new system calls in the follow files.
-```
-sysproc.c
-proc.h
 defs.h
 user.h
 syscall.h
 syscall.c
 usys.S
 ```
+
+First we will edit `proc.h` and add the `int priority` variable. This is so all of our processes can carry and track a priority number. We have set it up where 31 is the highest priority while 0 is the lowest. Next we added two system calls known as `int getpriority()` and `void setpriority(int)`. This is so we can test our changes in our user processes. In the following files you can see the changes made to create an `int` priority variable and our two system calls `int getpriority()` and `void setpriority(int)`.
 | proc.h | usys.S |
 |--------|--------|
 |<img src=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/prochlab2.JPG>|<img src=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetUSYS.JPG>|
