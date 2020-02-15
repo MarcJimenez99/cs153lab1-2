@@ -116,7 +116,7 @@ The following picture depicts the output of this on the test bench:
 <img src="https://github.com/MarcJimenez99/cs153labs/blob/master/cs153pictures/lab1/lab1WNOHANG.JPG">
 
 ## Lab 2 - Priority Scheduling & Aging Priority
-### a) Priority Scheduling
+### a) Priority Scheduling & Aging Priority
 
 In order to add priority scheduling we are going to make changes in the following files:
 ```
@@ -129,8 +129,8 @@ syscall.h
 syscall.c
 usys.S
 ```
-
 First we will edit `proc.h` and add the `int priority` variable. This is so all of our processes can carry and track a priority number. We have set it up where 31 is the highest priority while 0 is the lowest. Next we added two system calls known as `int getpriority()` and `void setpriority(int)`. This is so we can test our changes in our user processes. In the following files you can see the changes made to create an `int` priority variable and our two system calls `int getpriority()` and `void setpriority(int)`.
+
 | proc.h | usys.S |
 |--------|--------|
 |<img src=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/prochlab2.JPG>|<img src=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetUSYS.JPG>|
@@ -146,4 +146,6 @@ First we will edit `proc.h` and add the `int priority` variable. This is so all 
 | syscall.c |
 |--------|
 |<img src=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetSysCallC1.JPG><img src=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetSysCallC2.JPG>|
-### b) Aging Priority
+
+Now once setting that up we will now edit `proc.c` in order to enable priority scheduling and aging of priority. First we will change the `static struct proc* allocproc(void)`. This function will find unused processes and initialize their variables so now that we are giving our processes a priority variable we will want that initialized too. So in order to do that we added to the function to make it so initalized unused processes when found are given a priority of 15.
+
