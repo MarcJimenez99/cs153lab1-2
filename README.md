@@ -143,7 +143,7 @@ usys.S
 |<imgsrc=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/prochlab2.JPG>|<imgsrc=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetUSYS.JPG>|
 | defs.h | user.h |
 |--------|--------|
-|<imgsrc=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetDefsH.JPG>|<imgsrc=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetUserH.JPG>|
+|<imgsrc="https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetDefsH.JPG">|<imgsrc=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetUserH.JPG>|
 | syscall.h | sysproc.c |
 |--------|--------|
 |<imgsrc=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetSysCallH1.JPG>|<imgsrc=https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetSysprocC.JPG>|
