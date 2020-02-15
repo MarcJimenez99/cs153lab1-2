@@ -117,4 +117,6 @@ The following picture depicts the output of this on the test bench:
 
 ## Lab 2 - Priority Scheduling & Aging Priority
 ### a) Priority Scheduling
+
+In order to add priority scheduling we are going to add two new system calls, `getpriority()` and `setpriority()`. 
 ### b) Aging Priority
