@@ -125,7 +125,7 @@ PDAgingScheduler(void) {
   else {
     printf(1,"\n Error \n");
   }
-  printf(1, "\n If the parent and child process by 1 then it is correct! \n"); 
+  printf(1, "\n If the parent process decrements by 1 then it is correct! \n"); 
   exit(0); 
   return 0;
 }
