@@ -58,8 +58,8 @@ sysproc.c
 proc.c
 defs.h
 user.h
-syscall.c
 syscall.h
+syscall.c
 usys.S
 ```
 Similar to the previous changes we've made on both the `wait` and `exit` function, we will simply insert a new line in `defs.h` and `user.h` declaring our new system call `waitpid`.
@@ -118,5 +118,36 @@ The following picture depicts the output of this on the test bench:
 ## Lab 2 - Priority Scheduling & Aging Priority
 ### a) Priority Scheduling
 
-In order to add priority scheduling we are going to add two new system calls, `getpriority()` and `setpriority()`. 
+In order to add priority scheduling we are going to make changes in the following files:
+```
+sysproc.c
+proc.c
+proc.h
+defs.h
+user.h
+syscall.h
+usys.S
+```
+We are going to add a new variable in our PCB stucture located in our `proc.h` called `int priority` in order to track priority amongst proccesses. This will allow us to run the highest priority first. The way we have structured the priority is that 0 is our lowest priority and 31 is the highest. In addition to this we will need system calls in order to test this priority within our user processes. In order to create these two system calls we will declare the two new system calls in the follow files.
+```
+sysproc.c
+proc.h
+defs.h
+user.h
+syscall.h
+syscall.c
+usys.S
+```
+| proc.h | usys.S |
+|--------|--------|
+|<https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/prochlab2.JPG>|<https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetUSYS.JPG>|
+| defs.h | user.h |
+|--------|--------|
+|<https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetDefsH.JPG>|<https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetUserH.JPG>|
+| syscall.h | sysproc.c |
+|--------|--------|
+|<https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetSysCallH1.JPG>|<https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetSysprocC.JPG>|
+| syscall.c |
+|--------|
+|<https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetSysCallC1.JPG><https://github.com/MarcJimenez99/cs153lab1-2/blob/master/lab2pictures/getsetSysCallC2.JPG>|
 ### b) Aging Priority
