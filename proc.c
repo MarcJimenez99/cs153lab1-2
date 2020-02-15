@@ -88,7 +88,7 @@ allocproc(void)
 found:
   p->state = EMBRYO;
   p->pid = nextpid++;
-  p->priority = 0;
+  p->priority = 15;
 
   release(&ptable.lock);
 
@@ -374,7 +374,7 @@ scheduler(void)
   struct proc *p;
   struct cpu *c = mycpu();
   struct proc *p1;
-  struct proc *p2;
+  //struct proc *p2;
   c->proc = 0;
   
   for(;;){
@@ -393,13 +393,13 @@ scheduler(void)
 	  continue;
 	if(p1->priority > highP->priority)
 	  highP = p1;
-      } 
-      /*for(p2 = ptable.proc; p2 < &ptable.proc[NPROC]; p2++) {
-	if(p2->state == RUNNABLE)
-	   p2->priority = p2->priority + 1;
-        else if(p->state == RUNNING)
-           p2->priority = p2->priority - 1;
-      }*/
+      }
+      if (p->priority < p1->priority) {
+        if (p->priority == 31)
+	  p->priority = 31;
+        else 
+          p->priority = p->priority + 1;
+      }
       p = highP;
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
@@ -407,26 +407,18 @@ scheduler(void)
       c->proc = p;
       switchuvm(p); //tells the hardware to start using the target's process page table
       p->state = RUNNING;
-      //p->priority = p->priority - 1;
       swtch(&(c->scheduler), p->context);//context switch to the target processs's kernel thread. First saves the current registers. C->scheduler saves the current hardware registers in per-cpu storage. P->context loads saved regsiters of the target kernel thread into the x86 hardware registers, including stack pointer and instruction pointer.
       switchkvm(); //switches out of the user virtual map into the kernal
-
       // Process is done running for now.
       // It should have changed its p->state before coming back.
       c->proc = 0;
-      for(p2 = ptable.proc; p2 < &ptable.proc[NPROC]; p2++) {
-        if(p2->state == RUNNABLE) {
-	  if(p2 == p && p2->priority < 31) {
-	    p2->priority = p2->priority + 1;
-	  }
-          else if(p2 != p && p2->priority > 0) {
-	    p2->priority = p2->priority - 1; 
-          }
+ 	if (p->priority == 0) 
+	  p->priority = 0;
+	else {
+	  p->priority = p->priority - 1;
 	}
-      }
     }
     release(&ptable.lock);
-  
   }
 }
 
@@ -469,13 +461,21 @@ yield(void)
 void
 setpriority(int priority)
 {
-  myproc()->priority = priority; 
+  struct proc *curproc = myproc();
+  acquire(&ptable.lock);
+  if (priority > 31) 
+    priority = 31;
+  else if (priority < 0)
+    priority = 0;
+  curproc->priority = priority; 
+  release(&ptable.lock);
 }
 
 int
 getpriority()
 {
-  return myproc()->priority;
+  struct proc *curproc = myproc();
+  return curproc->priority;
 }
 // A fork child's very first scheduling by scheduler()
 // will swtch here.  "Return" to user space.
